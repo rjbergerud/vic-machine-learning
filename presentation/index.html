@@ -1,0 +1,289 @@
+<!--
+slidedeck: A modification of the Google IO 2012 HTML5 slide template
+URL: https://github.com/rmcgibbo/slidedeck
+
+Based on https://github.com/francescolaffi/elastic-google-io-slides, and
+ultimately:
+
+Google IO 2012 HTML5 Slide Template
+Authors: Eric Bidelman <ebidel@gmail.com>
+         Luke Mahe <lukem@google.com>
+URL: https://code.google.com/p/io-2012-slides
+-->
+<!DOCTYPE html>
+<html>
+<head>
+  <title> Introduction to ML</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">-->
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+  <!--This one seems to work all the time, but really small on ipad-->
+  <!--<meta name="viewport" content="initial-scale=0.4">-->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  
+  <link rel="stylesheet" media="all" href="theme/css/default.css">
+  <link rel="stylesheet" media="all" href="theme/css/custom.css">
+  <link rel="stylesheet" media="only screen and (max-device-width: 480px)" href="theme/css/phone.css">
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->
+  <script data-main="js/slides", src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+
+
+  <!-- MathJax support  -->
+  <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX", "output/HTML-CSS"],
+    showProcessingMessages: false,
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+      processEscapes: true
+    },
+    TeX: {
+      extensions: ["color.js"]
+    },
+    "HTML-CSS": { availableFonts: ["TeX"] }
+  });
+  </script>
+  <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <div style="display:hidden">
+  \[
+    \definecolor{data}{RGB}{18,110,213}
+    \definecolor{unknown}{RGB}{217,86,16}
+    \definecolor{learned}{RGB}{175,114,176}
+  \]
+  </div>
+
+</head>
+
+<body style="opacity: 0">
+
+<slides class="layout-widescreen">
+<slide class="title-slide segue nobackground">
+  <hgroup class="auto-fadein">
+
+    <h1> Introduction to ML</h1>
+    <h2> with Zoo Animals</h2>
+    <p> Victoria Machine Learning Meet</p>
+  </hgroup>
+</slide>
+
+
+<slide  >
+  
+    <hgroup>
+      <h2>Presentation Directions</h2>
+      <h3></h3>
+    </hgroup>
+    <article ><ul>
+<li>pressing 'f' toggle fullscreen</li>
+<li>pressing 'w' toggles widescreen</li>
+<li>'o' toggles overview mode</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Welcome</h2>
+      <h3></h3>
+    </hgroup>
+    <article ><p>Wow, 21 RSVPs!</p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Around the room</h2>
+      <h3></h3>
+    </hgroup>
+    <article ><ul>
+<li>Name?</li>
+<li>What brought you out tonight?</li>
+</ul>
+<!-- Slides for Zoo animals tutorial --></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Installation</h2>
+      <h3></h3>
+    </hgroup>
+    <article ><pre>
+wget https://repo.continuum.io/miniconda/Miniconda3-latest-MacOSX-x86_64.sh
+bash Miniconda3-latest-MacOSX-x86_64.sh
+# or
+wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh
+bash Miniconda3-latest-Linux-x86_64.sh
+</pre></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Setup</h2>
+      <h3></h3>
+    </hgroup>
+    <article ><pre>
+conda create -n zoo-animals python=3
+source activate zoo-animals
+jupyter notebook zoo-animals.ipynb
+</pre></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Pandas</h2>
+      <h3></h3>
+    </hgroup>
+    <article ><p><em>What is a dataframe?</em></p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2></h2>
+      <h3></h3>
+    </hgroup>
+    <article ><p>Pandas takes (originally) numpy arrays, and adds a index or labelled index to it.</p>
+<ul class="build">
+<li>Some motivation:</li>
+</ul>
+<pre class="prettyprint" data-lang="python">
+  import numpy as np
+
+  lunar_phase = [0.1 0.2, 0.3, 0.4, 0.5, 0.6]
+  low_tides = [0.4, 0.0, -0.5, 0.1, 0.3, 1.1]
+
+  observations = zip(lunar_phase, low_tides)
+
+  data = np.array(observations)
+  isinstance(data, np.ndarray) # True
+  isinstance(data[0], np.ndarray) # True
+
+  # Wouldn't it be nice be able to access as a column
+  # data['low_tides']
+
+</pre></article>
+ 
+</slide>
+
+<slide class="segue dark nobackground" >
+  
+    <!-- <aside class="gdbar"><img src="images/google_developers_icon_128.png"></aside> -->
+    <hgroup class="auto-fadein">
+      <h2>The pandas way</h2>
+      <h3>...with dataframes</h3>
+    </hgroup>
+  
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2></h2>
+      <h3></h3>
+    </hgroup>
+    <article ><pre class="prettyprint" data-lang=python>
+
+columns = ('Lunar Phase', 'Low Tides')
+observations = zip(lunar_phase, low_tides)
+
+
+data = np.array(observations)
+
+print(pd.DataFrame(data=data,
+                  columns=columns))
+Lunar Phase  Low Tides
+0          0.1        0.4
+1          0.2        0.0
+2          0.3       -0.5
+3          0.4        0.1
+4          0.5        0.3
+5          0.6        1.1
+</pre></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Pandas in a zoo</h2>
+      <h3></h3>
+    </hgroup>
+    <article ><!--  Have extra "stretch" slides in case this goes quickly --></article>
+ 
+</slide>
+
+<slide class="img-top-center" >
+  
+    <hgroup>
+      <h2>Brainstorm</h2>
+      <h3></h3>
+    </hgroup>
+    <article ><p>Ideas for topics and workshops for future meets</p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Keep in touch</h2>
+      <h3></h3>
+    </hgroup>
+    <article ><p>Post to our machine-learning channel on yyjtech slack w/ more ideas!</p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Thanks</h2>
+      <h3></h3>
+    </hgroup>
+    <article ><p>Thank you to Limbic Media and Consulting for hosting!</p></article>
+ 
+</slide>
+
+
+<slide class="thank-you-slide segue nobackground">
+  <!-- <aside class="gdbar right"><img src="images/google_developers_icon_128.png"></aside> -->
+  <article class="flexbox vleft auto-fadein">
+    <h2></h2>
+    <p></p>
+  </article>
+  <p data-config-contact class="auto-fadein"></p>
+  </p>
+</slide>
+
+<slide class="backdrop"></slide>
+
+</slides>
+
+<script>
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-XXXXXXXX-1']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+</script>
+
+<!--[if IE]>
+  <script src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js"></script>
+  <script>CFInstall.check({mode: 'overlay'});</script>
+<![endif]-->
+</body>
+</html>
