@@ -39,6 +39,8 @@ title: Setup
 <pre>
 conda create -n zoo-animals python=3
 source activate zoo-animals
+git clone https://github.com/rjbergerud/vic-machine-learning.git
+cd vic-machine-learning
 jupyter notebook zoo-animals.ipynb
 </pre>
 ---
