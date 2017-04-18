@@ -23,6 +23,19 @@ build_lists: false
 
 <!-- Slides for Zoo animals tutorial -->
 ---
+title: Roadmap
+build_lists: true
+
+- Around the room
+- Setup
+- Pandas
+- Zoo-Animals
+  - Exploring the data
+  - Build some classifiers!
+- Brainstorm
+- Hang out!  Eat, talk, listen, laugh...
+
+---
 title: Installation
 
 <pre>
@@ -106,6 +119,24 @@ build_lists: true
 - Pandas also has many useful utilities for importing  data
 - Let's load our zoo-dataset using pandas!
 
+---
+title: Sharing notebooks
+
+https://nbviewer.jupyter.org
+
+---
+title: Data exploration
+build_lists: true
+
+Take 5 minutes to poke around. Try using pandas and matplotlib to explore some of these questions (or come up with your own):
+
+- What are the most common, least common features?
+- Which values often occur together? (hair, milk)
+- Which values never occur together? (feathers, milk)
+- Which data points are outliers?  
+  - i.e. are an unusual combination of values,
+  - e.g. flying squirrel.
+
 <!--  Have extra "stretch" slides in case this goes quickly -->
 ---
 title: Brainstorm
@@ -113,6 +144,11 @@ subtitle:
 class: img-top-center
 
 Ideas for topics and workshops for future meets
+
+---
+title: Feedback
+class: segue dark
+
 
 ---
 title: Keep in touch
