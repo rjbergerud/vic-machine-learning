@@ -9,6 +9,30 @@ title: Presentation Directions
 - pressing 'w' toggles widescreen
 - 'o' toggles overview mode
 
+---
+title: Installation & Setup
+
+Copy of slides & setup instructions:
+<pre>
+https://github.com/rjbergerud/vic-machine-learning/blob/master/meet1/presentation/slides.md
+</pre>
+
+<pre>
+# mac osx:
+wget https://repo.continuum.io/miniconda/Miniconda3-latest-MacOSX-x86_64.sh
+bash Miniconda3-latest-MacOSX-x86_64.sh
+# linux:
+wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh
+bash Miniconda3-latest-Linux-x86_64.sh
+</pre>
+
+<pre>
+conda create -n zoo-animals python=3
+source activate zoo-animals
+git clone https://github.com/rjbergerud/vic-machine-learning.git
+cd meet1
+jupyter notebook zoo-animals.ipynb
+</pre>
 
 ---
 title: Welcome
@@ -23,6 +47,10 @@ build_lists: false
 
 <!-- Slides for Zoo animals tutorial -->
 ---
+title: Keeping it simple :)
+class: segue dark
+
+---
 title: Roadmap
 build_lists: true
 
@@ -35,27 +63,7 @@ build_lists: true
 - Brainstorm
 - Hang out!  Eat, talk, listen, laugh...
 
----
-title: Installation
 
-<pre>
-wget https://repo.continuum.io/miniconda/Miniconda3-latest-MacOSX-x86_64.sh
-bash Miniconda3-latest-MacOSX-x86_64.sh
-# or
-wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh
-bash Miniconda3-latest-Linux-x86_64.sh
-</pre>
-
----
-title: Setup
-
-<pre>
-conda create -n zoo-animals python=3
-source activate zoo-animals
-git clone https://github.com/rjbergerud/vic-machine-learning.git
-cd vic-machine-learning
-jupyter notebook zoo-animals.ipynb
-</pre>
 ---
 title: Pandas
 
@@ -136,6 +144,42 @@ Take 5 minutes to poke around. Try using pandas and matplotlib to explore some o
 - Which data points are outliers?  
   - i.e. are an unusual combination of values,
   - e.g. flying squirrel.
+
+---
+title: classifiers
+
+## What's a Classifier?
+
+---
+title: examples of classifiers
+build_lists: true
+
+Let's hear some examples!
+### Examples of classifiers:
+- Trees
+- Logistic Regression
+- Naive Bayes
+- Support Vector Machine (SVM)
+- Boosting algorithms
+- Neural Networks
+
+---
+title:
+
+Let's try out some classifiers with our zoo-animals.
+
+---
+title: Problems...
+build_lists: true
+
+Question: What are some issues that could come up with our new classifier?
+- Don't know how it generalizes
+- Not enough training data to generalize
+
+---
+title: Testing
+
+We'll do it anyways...
 
 <!--  Have extra "stretch" slides in case this goes quickly -->
 ---
