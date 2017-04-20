@@ -87,6 +87,36 @@ URL: https://code.google.com/p/io-2012-slides
 <slide  >
   
     <hgroup>
+      <h2>Installation & Setup</h2>
+      <h3></h3>
+    </hgroup>
+    <article ><p>Copy of slides &amp; setup instructions:
+<pre>
+https://github.com/rjbergerud/vic-machine-learning/blob/master/meet1/presentation/slides.md
+</pre></p>
+<pre>
+# mac osx:
+wget https://repo.continuum.io/archive/Anaconda3-4.3.1-Linux-x86_64.sh
+bash Anaconda3-4.3.1-Linux-x86_64.sh
+# linux:
+wget https://repo.continuum.io/archive/Anaconda3-4.3.1-MacOSX-x86_64.sh
+bash Miniconda3-latest-Linux-x86_64.sh
+</pre>
+
+<pre>
+git clone https://github.com/rjbergerud/vic-machine-learning.git
+cd vic-machine-learning/meet1
+conda create -n zoo-animals python=3
+source activate zoo-animals
+pip install -r requirements.txt
+jupyter notebook zoo-animals.ipynb
+</pre></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
       <h2>Welcome</h2>
       <h3></h3>
     </hgroup>
@@ -108,33 +138,32 @@ URL: https://code.google.com/p/io-2012-slides
  
 </slide>
 
-<slide  >
+<slide class="segue dark" >
   
-    <hgroup>
-      <h2>Installation</h2>
+    <!-- <aside class="gdbar"><img src="images/google_developers_icon_128.png"></aside> -->
+    <hgroup class="auto-fadein">
+      <h2>Keeping it simple :)</h2>
       <h3></h3>
     </hgroup>
-    <article ><pre>
-wget https://repo.continuum.io/miniconda/Miniconda3-latest-MacOSX-x86_64.sh
-bash Miniconda3-latest-MacOSX-x86_64.sh
-# or
-wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh
-bash Miniconda3-latest-Linux-x86_64.sh
-</pre></article>
- 
+  
 </slide>
 
 <slide  >
   
     <hgroup>
-      <h2>Setup</h2>
+      <h2>Roadmap</h2>
       <h3></h3>
     </hgroup>
-    <article ><pre>
-conda create -n zoo-animals python=3
-source activate zoo-animals
-jupyter notebook zoo-animals.ipynb
-</pre></article>
+    <article ><ul class="build">
+<li>Around the room</li>
+<li>Setup</li>
+<li>Pandas</li>
+<li>Zoo-Animals</li>
+<li>Exploring the data</li>
+<li>Build some classifiers!</li>
+<li>Brainstorm</li>
+<li>Hang out!  Eat, talk, listen, laugh...</li>
+</ul></article>
  
 </slide>
 
@@ -174,6 +203,18 @@ jupyter notebook zoo-animals.ipynb
   # data['low_tides']
 
 </pre></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2></h2>
+      <h3></h3>
+    </hgroup>
+    <article ><p>Want to access data as if it were a table?
+Want to index data by date?
+Want to easily create sub-tables by selecting certain columns?</p></article>
  
 </slide>
 
@@ -220,7 +261,97 @@ Lunar Phase  Low Tides
       <h2>Pandas in a zoo</h2>
       <h3></h3>
     </hgroup>
-    <article ><!--  Have extra "stretch" slides in case this goes quickly --></article>
+    <article ></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Sharing notebooks</h2>
+      <h3></h3>
+    </hgroup>
+    <article ><p>https://nbviewer.jupyter.org</p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Data exploration</h2>
+      <h3></h3>
+    </hgroup>
+    <article ><p>Take 5 minutes to poke around. Try using pandas and matplotlib to explore some of these questions (or come up with your own):</p>
+<ul class="build">
+<li>What are the most common, least common features?</li>
+<li>Which values often occur together? (hair, milk)</li>
+<li>Which values never occur together? (feathers, milk)</li>
+<li>Which data points are outliers?  </li>
+<li>i.e. are an unusual combination of values,</li>
+<li>e.g. flying squirrel.</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>classifiers</h2>
+      <h3></h3>
+    </hgroup>
+    <article ><h2>What's a Classifier?</h2></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>examples of classifiers</h2>
+      <h3></h3>
+    </hgroup>
+    <article ><p>Let's hear some examples!</p>
+<h3>Examples of classifiers:</h3>
+<ul class="build">
+<li>Trees</li>
+<li>Logistic Regression</li>
+<li>Naive Bayes</li>
+<li>Support Vector Machine (SVM)</li>
+<li>Boosting algorithms</li>
+<li>Neural Networks</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2></h2>
+      <h3></h3>
+    </hgroup>
+    <article ><p>Let's try out some classifiers with our zoo-animals.</p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Problems...</h2>
+      <h3></h3>
+    </hgroup>
+    <article ><p>Question: What are some issues that could come up with our new classifier?
+- Don't know how it generalizes
+- Not enough training data to generalize</p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Testing</h2>
+      <h3></h3>
+    </hgroup>
+    <article ><p>We'll do it anyways...</p>
+<!--  Have extra "stretch" slides in case this goes quickly --></article>
  
 </slide>
 
@@ -232,6 +363,16 @@ Lunar Phase  Low Tides
     </hgroup>
     <article ><p>Ideas for topics and workshops for future meets</p></article>
  
+</slide>
+
+<slide class="segue dark" >
+  
+    <!-- <aside class="gdbar"><img src="images/google_developers_icon_128.png"></aside> -->
+    <hgroup class="auto-fadein">
+      <h2>Feedback</h2>
+      <h3></h3>
+    </hgroup>
+  
 </slide>
 
 <slide  >
