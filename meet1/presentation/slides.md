@@ -27,11 +27,11 @@ bash Miniconda3-latest-Linux-x86_64.sh
 </pre>
 
 <pre>
+git clone https://github.com/rjbergerud/vic-machine-learning.git
+cd vic-machine-learning/meet1
 conda create -n zoo-animals python=3
 source activate zoo-animals
 pip install -r requirements.txt
-git clone https://github.com/rjbergerud/vic-machine-learning.git
-cd meet1
 jupyter notebook zoo-animals.ipynb
 </pre>
 
