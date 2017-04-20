@@ -23,7 +23,7 @@ wget https://repo.continuum.io/archive/Anaconda3-4.3.1-Linux-x86_64.sh
 bash Anaconda3-4.3.1-Linux-x86_64.sh
 # linux:
 wget https://repo.continuum.io/archive/Anaconda3-4.3.1-MacOSX-x86_64.sh
-bash Miniconda3-latest-Linux-x86_64.sh
+bash Anaconda3-4.3.1-MacOSX-x86_64.sh
 </pre>
 
 <pre>
