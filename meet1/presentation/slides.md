@@ -38,7 +38,7 @@ jupyter notebook zoo-animals.ipynb
 ---
 title: Welcome
 
-Wow, 21 RSVPs!
+Wow, <del>21</del> 30+ RSVPs!
 ---
 title: Around the room
 build_lists: false
@@ -72,21 +72,20 @@ title: Pandas
 
 ---
 title:
-build_lists: true
 
-Pandas takes (originally) numpy arrays, and adds a index or labelled index to it.
+Pandas takes (originally) numpy arrays, and adds accessor methods and an index.
 
 - Some motivation:
 
 <pre class="prettyprint" data-lang="python">
-  import numpy as np
+import numpy as np
 
-  lunar_phase = [0.1 0.2, 0.3, 0.4, 0.5, 0.6]
-  low_tides = [0.4, 0.0, -0.5, 0.1, 0.3, 1.1]
+lunar_phase = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6]
+low_tides = [0.4, 0.0, -0.5, 0.1, 0.3, 1.1]
 
-  observations = zip(lunar_phase, low_tides)
+observations = zip(lunar_phase, low_tides)
 
-  data = np.array(observations)
+data = np.array(observations)
   isinstance(data, np.ndarray) # True
   isinstance(data[0], np.ndarray) # True
 
@@ -95,18 +94,20 @@ Pandas takes (originally) numpy arrays, and adds a index or labelled index to it
 
 </pre>
 ---
+title: Pandas makes these actions easy:
 
-Want to access data as if it were a table?
-Want to index data by date?
-Want to easily create sub-tables by selecting certain columns?
+- Want to access data as if it were a table?
+- Want to easily join tables?  Select sub-tables?  
+- Want to index data by date?
 
 ---
 title: The pandas way
 subtitle: ...with dataframes
 class: segue dark nobackground
- ---
+
 <!-- Live code this -->
 ---
+- **Want to access data as if it were a table?**
 
 <pre class="prettyprint" data-lang=python>
 
@@ -116,8 +117,9 @@ observations = zip(lunar_phase, low_tides)
 
 data = np.array(observations)
 
-print(pd.DataFrame(data=data,
-                  columns=columns))
+df_observations = pd.DataFrame(data=data,
+                  columns=columns)
+print(df_observations)
 Lunar Phase  Low Tides
 0          0.1        0.4
 1          0.2        0.0
@@ -125,11 +127,46 @@ Lunar Phase  Low Tides
 3          0.4        0.1
 4          0.5        0.3
 5          0.6        1.1
+
+#Just look at one column's data
+print(df_observations['Low Tides'])
+</pre>
+---
+
+
+** -- Want to join dataframes?**
+
+<pre class="prettyprint" data-lang=python>
+data = {'date':[
+'2014-05-01 18:47:05',
+'2014-05-01 18:47:05',
+'2014-05-02 18:47:05',
+'2014-05-02 18:47:05',
+'2014-05-02 18:47:05',
+'2014-05-02 18:47:05',
+], 'lunar_distance': [34, 34, 34, 33, 33,33]}
+df_observations2 = pd.DataFrame(data)
+df_observations = df_observations.join(df_observations2)
+</pre>
+
+---
+
+
+**- Want to index data by date?**
+<pre class="prettyprint" data-lang=python>
+df_observations['date'] = pd.to_datetime(df_observations['date'])
+df_observations.index = df_observations['date']
+del df_observations['date']
+print(df_observations)
+
+date                 Lunar Phase  Low Tides lunar_distance                                       
+2014-05-01 18:47:05   0.1         0.4       34  (...)
 </pre>
 
 ---
 title: Pandas in a zoo
 build_lists: true
+
 - Pandas also has many useful utilities for importing  data
 - Let's load our zoo-dataset using pandas!
 
@@ -152,16 +189,16 @@ Take 5 minutes to poke around. Try using pandas and matplotlib to explore some o
   - e.g. flying squirrel.
 
 ---
-title: classifiers
 
-## What's a Classifier?
+
+## What is a Classifier?
 
 ---
-title: examples of classifiers
+title: Examples of Classifiers
 build_lists: true
 
 Let's hear some examples!
-### Examples of classifiers:
+
 - Trees
 - Logistic Regression
 - Naive Bayes
