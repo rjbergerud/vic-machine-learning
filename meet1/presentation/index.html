@@ -90,20 +90,21 @@ URL: https://code.google.com/p/io-2012-slides
       <h2>Installation & Setup</h2>
       <h3></h3>
     </hgroup>
-    <article ><p>Copy of slides &amp; setup instructions:
-<pre>
+    <article ><pre>
+#Copy of slides & setup instructions:
 https://github.com/rjbergerud/vic-machine-learning/blob/master/meet1/presentation/slides.md
-</pre></p>
-<pre>
-# mac osx:
-wget https://repo.continuum.io/archive/Anaconda3-4.3.1-Linux-x86_64.sh
-bash Anaconda3-4.3.1-Linux-x86_64.sh
-# linux:
-wget https://repo.continuum.io/archive/Anaconda3-4.3.1-MacOSX-x86_64.sh
-bash Miniconda3-latest-Linux-x86_64.sh
 </pre>
 
 <pre>
+# linux:
+wget Miniconda3-latest-Linux-x86_64
+bash Miniconda3-latest-Linux-x86_64
+# mac osx:
+wget https://repo.continuum.io/miniconda/Miniconda3-latest-MacOSX-x86_64.sh
+bash Miniconda3-latest-MacOSX-x86_64.sh
+
+# When prompted to add miniconda to your path in .bashrc, say yes.
+# Open a new terminal session, then:
 git clone https://github.com/rjbergerud/vic-machine-learning.git
 cd vic-machine-learning/meet1
 conda create -n zoo-animals python=3
@@ -120,7 +121,7 @@ jupyter notebook zoo-animals.ipynb
       <h2>Welcome</h2>
       <h3></h3>
     </hgroup>
-    <article ><p>Wow, 21 RSVPs!</p></article>
+    <article ><p>Wow, <del>21</del> 30+ RSVPs!</p></article>
  
 </slide>
 
@@ -183,24 +184,22 @@ jupyter notebook zoo-animals.ipynb
       <h2></h2>
       <h3></h3>
     </hgroup>
-    <article ><p>Pandas takes (originally) numpy arrays, and adds a index or labelled index to it.</p>
-<ul class="build">
+    <article ><p>Pandas takes (originally) numpy arrays, and adds accessor methods and an index.</p>
+<ul>
 <li>Some motivation:</li>
 </ul>
 <pre class="prettyprint" data-lang="python">
-  import numpy as np
+import numpy as np
 
-  lunar_phase = [0.1 0.2, 0.3, 0.4, 0.5, 0.6]
-  low_tides = [0.4, 0.0, -0.5, 0.1, 0.3, 1.1]
+lunar_phase = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6]
+low_tides = [0.4, 0.0, -0.5, 0.1, 0.3, 1.1]
 
-  observations = zip(lunar_phase, low_tides)
+observations = { 'lunar_phase': lunar_phase, 'low_tides': low_tides }
 
-  data = np.array(observations)
-  isinstance(data, np.ndarray) # True
-  isinstance(data[0], np.ndarray) # True
-
-  # Wouldn't it be nice be able to access as a column
+  # Wouldn't it be nice be able to access as a column?
   # data['low_tides']
+  # And by row?
+  # data.ix[0]
 
 </pre></article>
  
@@ -209,12 +208,14 @@ jupyter notebook zoo-animals.ipynb
 <slide  >
   
     <hgroup>
-      <h2></h2>
+      <h2>Pandas makes these actions easy:</h2>
       <h3></h3>
     </hgroup>
-    <article ><p>Want to access data as if it were a table?
-Want to index data by date?
-Want to easily create sub-tables by selecting certain columns?</p></article>
+    <article ><ul>
+<li>Want to access data as if it were a table?</li>
+<li>Want to easily join tables?  Select sub-tables?  </li>
+<li>Want to index data by date?</li>
+</ul></article>
  
 </slide>
 
@@ -234,16 +235,15 @@ Want to easily create sub-tables by selecting certain columns?</p></article>
       <h2></h2>
       <h3></h3>
     </hgroup>
-    <article ><pre class="prettyprint" data-lang=python>
+    <article ><ul>
+<li><strong>Want to access data as if it were a table?</strong></li>
+</ul>
+<pre class="prettyprint" data-lang=python>
 
-columns = ('Lunar Phase', 'Low Tides')
-observations = zip(lunar_phase, low_tides)
+observations = { 'lunar phase': lunar_phase, 'low tides': low_tides }
 
-
-data = np.array(observations)
-
-print(pd.DataFrame(data=data,
-                  columns=columns))
+df_observations = pd.DataFrame(data)
+print(df_observations)
 Lunar Phase  Low Tides
 0          0.1        0.4
 1          0.2        0.0
@@ -251,7 +251,50 @@ Lunar Phase  Low Tides
 3          0.4        0.1
 4          0.5        0.3
 5          0.6        1.1
+
+#Just look at one column's data
+print(df_observations['Low Tides'])
 </pre></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2></h2>
+      <h3></h3>
+    </hgroup>
+    <article ><p><strong> -- Want to join dataframes?</strong></p>
+<pre class="prettyprint" data-lang=python>
+data = {'date':[
+'2014-05-01 18:47:05',
+'2014-05-02 18:47:05',
+'2014-05-03 18:47:05',
+'2014-05-04 18:47:05',
+'2014-05-05 18:47:05',
+'2014-05-06 18:47:05',
+], 'lunar_distance': [34, 34, 34, 33, 33,33]}
+df_observations2 = pd.DataFrame(data)
+df_observations = df_observations.join(df_observations2)
+</pre></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2></h2>
+      <h3></h3>
+    </hgroup>
+    <article ><p><strong>- Want to index data by date?</strong>
+<pre class="prettyprint" data-lang=python>
+df_observations['date'] = pd.to_datetime(df_observations['date'])
+df_observations.index = df_observations['date']
+del df_observations['date']
+print(df_observations)</p>
+<p>date                 Lunar Phase  Low Tides lunar_distance                                     <br />
+2014-05-01 18:47:05   0.1         0.4       34  (...)
+</pre></p></article>
  
 </slide>
 
@@ -261,7 +304,10 @@ Lunar Phase  Low Tides
       <h2>Pandas in a zoo</h2>
       <h3></h3>
     </hgroup>
-    <article ></article>
+    <article ><ul class="build">
+<li>Pandas also has many useful utilities for importing  data</li>
+<li>Let's load our zoo-dataset using pandas!</li>
+</ul></article>
  
 </slide>
 
@@ -296,21 +342,20 @@ Lunar Phase  Low Tides
 <slide  >
   
     <hgroup>
-      <h2>classifiers</h2>
+      <h2></h2>
       <h3></h3>
     </hgroup>
-    <article ><h2>What's a Classifier?</h2></article>
+    <article ><h2>What is a Classifier?</h2></article>
  
 </slide>
 
 <slide  >
   
     <hgroup>
-      <h2>examples of classifiers</h2>
+      <h2>Examples of Classifiers</h2>
       <h3></h3>
     </hgroup>
     <article ><p>Let's hear some examples!</p>
-<h3>Examples of classifiers:</h3>
 <ul class="build">
 <li>Trees</li>
 <li>Logistic Regression</li>
@@ -391,7 +436,8 @@ Lunar Phase  Low Tides
       <h2>Thanks</h2>
       <h3></h3>
     </hgroup>
-    <article ><p>Thank you to Limbic Media and Consulting for hosting!</p></article>
+    <article ><p>Thank you to Limbic Media and Consulting for hosting!</p>
+<p>Thanks to Jorge, Chris, Charles, Nate, and Tana!</p></article>
  
 </slide>
 

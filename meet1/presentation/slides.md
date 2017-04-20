@@ -12,21 +12,20 @@ title: Presentation Directions
 ---
 title: Installation & Setup
 
-Copy of slides & setup instructions:
 <pre>
+#Copy of slides & setup instructions:
 https://github.com/rjbergerud/vic-machine-learning/blob/master/meet1/presentation/slides.md
 </pre>
-
 <pre>
-# mac osx:
-wget https://repo.continuum.io/archive/Anaconda3-4.3.1-Linux-x86_64.sh
-bash Anaconda3-4.3.1-Linux-x86_64.sh
 # linux:
-wget https://repo.continuum.io/archive/Anaconda3-4.3.1-MacOSX-x86_64.sh
-bash Anaconda3-4.3.1-MacOSX-x86_64.sh
-</pre>
+wget Miniconda3-latest-Linux-x86_64
+bash Miniconda3-latest-Linux-x86_64
+# mac osx:
+wget https://repo.continuum.io/miniconda/Miniconda3-latest-MacOSX-x86_64.sh
+bash Miniconda3-latest-MacOSX-x86_64.sh
 
-<pre>
+# When prompted to add miniconda to your path in .bashrc, say yes.
+# Open a new terminal session, then:
 git clone https://github.com/rjbergerud/vic-machine-learning.git
 cd vic-machine-learning/meet1
 conda create -n zoo-animals python=3
@@ -83,14 +82,12 @@ import numpy as np
 lunar_phase = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6]
 low_tides = [0.4, 0.0, -0.5, 0.1, 0.3, 1.1]
 
-observations = zip(lunar_phase, low_tides)
+observations = { 'lunar_phase': lunar_phase, 'low_tides': low_tides }
 
-data = np.array(observations)
-  isinstance(data, np.ndarray) # True
-  isinstance(data[0], np.ndarray) # True
-
-  # Wouldn't it be nice be able to access as a column
+  # Wouldn't it be nice be able to access as a column?
   # data['low_tides']
+  # And by row?
+  # data.ix[0]
 
 </pre>
 ---
@@ -111,14 +108,9 @@ class: segue dark nobackground
 
 <pre class="prettyprint" data-lang=python>
 
-columns = ('Lunar Phase', 'Low Tides')
-observations = zip(lunar_phase, low_tides)
+observations = { 'lunar phase': lunar_phase, 'low tides': low_tides }
 
-
-data = np.array(observations)
-
-df_observations = pd.DataFrame(data=data,
-                  columns=columns)
+df_observations = pd.DataFrame(data)
 print(df_observations)
 Lunar Phase  Low Tides
 0          0.1        0.4
@@ -139,11 +131,11 @@ print(df_observations['Low Tides'])
 <pre class="prettyprint" data-lang=python>
 data = {'date':[
 '2014-05-01 18:47:05',
-'2014-05-01 18:47:05',
 '2014-05-02 18:47:05',
-'2014-05-02 18:47:05',
-'2014-05-02 18:47:05',
-'2014-05-02 18:47:05',
+'2014-05-03 18:47:05',
+'2014-05-04 18:47:05',
+'2014-05-05 18:47:05',
+'2014-05-06 18:47:05',
 ], 'lunar_distance': [34, 34, 34, 33, 33,33]}
 df_observations2 = pd.DataFrame(data)
 df_observations = df_observations.join(df_observations2)
@@ -246,3 +238,5 @@ Post to our machine-learning channel on yyjtech slack w/ more ideas!
 title: Thanks
 
 Thank you to Limbic Media and Consulting for hosting!
+
+Thanks to Jorge, Chris, Charles, Nate, and Tana!
