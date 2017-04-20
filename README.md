@@ -6,7 +6,9 @@
 To run a presentation, first install slidedeck
 `pip install slidedeck`
 
-To make sure slides are up to date with `slides.md`
-`slidedeck render`
+To make sure slides are up to date with slides.md, go to the presentation folder and run
+`slidedeck render`.
 
 Then run a local server to serve the static files.
+
+If you would like to prepare a workshop or presentation for a future meet, here's [the slidedeck repo](https://github.com/rmcgibbo/slidedeck). 
