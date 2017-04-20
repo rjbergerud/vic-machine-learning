@@ -60,6 +60,7 @@ build_lists: true
 - Zoo-Animals
   - Exploring the data
   - Build some classifiers!
+  - Testing (time-permitting)
 - Brainstorm
 - Hang out!  Eat, talk, listen, laugh...
 
@@ -210,6 +211,7 @@ build_lists: true
 Question: What are some issues that could come up with our new classifier?
 - Don't know how it generalizes
 - Not enough training data to generalize
+- Too little training data, to complicated a model = overfitting
 
 ---
 title: Testing
