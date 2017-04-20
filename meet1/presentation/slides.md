@@ -19,16 +19,17 @@ https://github.com/rjbergerud/vic-machine-learning/blob/master/meet1/presentatio
 
 <pre>
 # mac osx:
-wget https://repo.continuum.io/miniconda/Miniconda3-latest-MacOSX-x86_64.sh
-bash Miniconda3-latest-MacOSX-x86_64.sh
+wget https://repo.continuum.io/archive/Anaconda3-4.3.1-Linux-x86_64.sh
+bash Anaconda3-4.3.1-Linux-x86_64.sh
 # linux:
-wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh
+wget https://repo.continuum.io/archive/Anaconda3-4.3.1-MacOSX-x86_64.sh
 bash Miniconda3-latest-Linux-x86_64.sh
 </pre>
 
 <pre>
 conda create -n zoo-animals python=3
 source activate zoo-animals
+pip install -r requirements.txt
 git clone https://github.com/rjbergerud/vic-machine-learning.git
 cd meet1
 jupyter notebook zoo-animals.ipynb
@@ -93,6 +94,11 @@ Pandas takes (originally) numpy arrays, and adds a index or labelled index to it
   # data['low_tides']
 
 </pre>
+---
+
+Want to access data as if it were a table?
+Want to index data by date?
+Want to easily create sub-tables by selecting certain columns?
 
 ---
 title: The pandas way
